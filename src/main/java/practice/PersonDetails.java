@@ -99,7 +99,7 @@ public class PersonDetails {
 	}
 
 	public static void main(String[] args) {
-		PersonDetails a = new PersonDetails("riya","jadhav","hadapsar","pune","maharashtra",423345,1234567654,"riya@gmail.com") ;
+		PersonDetails a = new PersonDetails("nrupesh","mhatre","uran","navi mumbai","maharashtra",423345,1234567654,"nrup@gmail.com") ;
 		a.toString();
 	}
 }
