@@ -1,5 +1,6 @@
 package practice;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AddressBookMain {
@@ -29,6 +30,8 @@ public class AddressBookMain {
 			System.out.println("16.Read data from file");
 			System.out.println("17.Write data to csv file");
 			System.out.println("18.Read data from csv file");
+			System.out.println("19.Write data to csv file");
+			System.out.println("20.Read data from csv file");
 			ch= s.nextInt();
 			switch(ch) {
 			case 1: 
@@ -101,12 +104,24 @@ public class AddressBookMain {
 			case 18:
 				c.readFileDataCSV();
 				break;
+			case 19:
+				try {
+					c.writeDataInJSon();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			case 20:
+				try {
+					c.readDataFromJson();
+				} catch (IOException e) {
+					e.printStackTrace();
+				};
+				break;
 			}System.out.println("Do you want to continue? if yes press '1' ");
 			ans = s.nextInt();
 		}while(ans == 1);
 		s.close();
 	}
-
-	
 }
 

@@ -1,12 +1,18 @@
 package practice;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import com.google.gson.Gson;
 
 public class AddressBook {
 	private String first;
@@ -17,6 +23,7 @@ public class AddressBook {
 	private int zip;
 	private long phoneNo;
 	private String email;
+	
 	ArrayList<PersonDetails> contactBook = new ArrayList<>();
 	Scanner s = new Scanner(System.in);
 	public void readData() {
@@ -267,4 +274,33 @@ public class AddressBook {
 		            e.printStackTrace();
 		        }
 		    }  
+		    public void writeDataInJSon() throws IOException {
+		        {
+		            Path filePath = Paths.get("data.json");
+		            Gson gson = new Gson();
+		            String json = gson.toJson(contactBook);
+		            FileWriter writer = new FileWriter(String.valueOf(filePath));
+		            writer.write(json);
+		            writer.close();
+		        }
+		    }
+
+		    public void readDataFromJson() throws IOException {
+		        ArrayList<PersonDetails> contactList = null;
+		        Path filePath = Paths.get("data.json");
+		        try (Reader reader = Files.newBufferedReader(filePath);) {
+		            Gson gson = new Gson();
+		            contactList = new ArrayList<PersonDetails>(Arrays.asList(gson.fromJson(reader, PersonDetails[].class)));
+		            for (PersonDetails contact : contactList) {
+		                System.out.println("Firstname : " + contact.getFirstName());
+		                System.out.println("Lastname : " + contact.getLastName());
+		                System.out.println("Address : " + contact.getAddress());
+		                System.out.println("City : " + contact.getCity());
+		                System.out.println("State : " + contact.getState());
+		                System.out.println("Zip : " + contact.getZip());
+		                System.out.println("Phone number : " + contact.getPhoneNo());
+		            }
+
+		        }
+		    }
 }
