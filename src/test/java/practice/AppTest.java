@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 class AppTest {
 	
-	 @Test
+	
+	    @Test
 	    public void shouldAnswerWithTrue()
 	    {
 	        assertTrue( true );
 	    }
-
 }

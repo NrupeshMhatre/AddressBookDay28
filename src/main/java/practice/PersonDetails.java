@@ -9,7 +9,6 @@ public class PersonDetails {
 	private int Zip;
 	private long PhoneNo;
 	private String Email;
-
 	public PersonDetails(String first, String last, String add, String city, String state,
 			int zip, long phone, String email) {
 		this.FirstName = first;
