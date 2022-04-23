@@ -9,6 +9,7 @@ public class PersonDetails {
 	private int Zip;
 	private long PhoneNo;
 	private String Email;
+
 	public PersonDetails(String first, String last, String add, String city, String state,
 			int zip, long phone, String email) {
 		this.FirstName = first;
@@ -98,7 +99,7 @@ public class PersonDetails {
 	}
 
 	public static void main(String[] args) {
-		PersonDetails a = new PersonDetails("nrupesh","mhatre","uran","navi mumbai","maharashtra",423345,1234567654,"nrup@gmail.com") ;
+		PersonDetails a = new PersonDetails("riya","jadhav","hadapsar","pune","maharashtra",423345,1234567654,"riya@gmail.com") ;
 		a.toString();
 	}
 }
