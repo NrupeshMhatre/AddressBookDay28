@@ -241,6 +241,7 @@ public class AddressBook {
 	        });
 	        try {
 	            Files.write(Paths.get("Data.txt"), personBuffer.toString().getBytes());
+
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
@@ -249,57 +250,10 @@ public class AddressBook {
 	    public void readFileData() {
 	        try {
 	            Files.lines(new File("Data.txt").toPath()).map(String::trim).forEach(System.out::println);
+
 	        } catch (IOException e) {
 	            e.printStackTrace();
+
 	        }
 	    }
-		 public void writeDataCSV() {
-		        StringBuffer personBuffer = new StringBuffer();
-		        contactBook.forEach(person -> {
-		            String personDataString = person.toString().concat("\n");
-		            personBuffer.append(personDataString);
-		        });
-		        try {
-		            Files.write(Paths.get("Data.csv"), personBuffer.toString().getBytes());
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-		    }
-
-		    public void readFileDataCSV() {
-		        try {
-		            Files.lines(new File("Data.csv").toPath()).map(String::trim).forEach(System.out::println);
-		        } catch (IOException e) {
-		            e.printStackTrace();
-		        }
-		    }  
-		    public void writeDataInJSon() throws IOException {
-		        {
-		            Path filePath = Paths.get("data.json");
-		            Gson gson = new Gson();
-		            String json = gson.toJson(contactBook);
-		            FileWriter writer = new FileWriter(String.valueOf(filePath));
-		            writer.write(json);
-		            writer.close();
-		        }
-		    }
-
-		    public void readDataFromJson() throws IOException {
-		        ArrayList<PersonDetails> contactList = null;
-		        Path filePath = Paths.get("data.json");
-		        try (Reader reader = Files.newBufferedReader(filePath);) {
-		            Gson gson = new Gson();
-		            contactList = new ArrayList<PersonDetails>(Arrays.asList(gson.fromJson(reader, PersonDetails[].class)));
-		            for (PersonDetails contact : contactList) {
-		                System.out.println("Firstname : " + contact.getFirstName());
-		                System.out.println("Lastname : " + contact.getLastName());
-		                System.out.println("Address : " + contact.getAddress());
-		                System.out.println("City : " + contact.getCity());
-		                System.out.println("State : " + contact.getState());
-		                System.out.println("Zip : " + contact.getZip());
-		                System.out.println("Phone number : " + contact.getPhoneNo());
-		            }
-
-		        }
-		    }
 }
